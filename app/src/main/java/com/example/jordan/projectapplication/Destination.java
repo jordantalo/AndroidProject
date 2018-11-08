@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import com.android.volley.toolbox.Volley;
 
 public class Destination extends AppCompatActivity {
 
+    static final String TAG = "Montag";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +30,7 @@ public class Destination extends AppCompatActivity {
 
         ImageView mImageView;
         final TextView mTxtDisplay = (TextView) findViewById(R.id.txtDisplay);
-        String url = "http://www.rollingtown.com/?json=get_recent_posts";
+        String url = "http://voyage2.corellis.eu/api/v2/homev2?lat=43.14554197717751&lon=6.00.246207789145&offset=0";
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
         // Request a string response from the provided URL.
@@ -37,12 +39,13 @@ public class Destination extends AppCompatActivity {
             public void onResponse(Object o) {
             // Display the first 500 characters of the response string.
                 String response = (String)o;
-                mTxtDisplay.setText("Response is: "+ response.substring(0,500));
+                mTxtDisplay.setText("Response is: " + response.substring(0,500));
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 mTxtDisplay.setText("That didn't work!");
+
             }
         });
         // Add the request to the RequestQueue.
@@ -50,4 +53,5 @@ public class Destination extends AppCompatActivity {
     }
 
 
+    
 }

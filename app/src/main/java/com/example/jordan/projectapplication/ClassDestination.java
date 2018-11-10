@@ -3,7 +3,8 @@ package com.example.jordan.projectapplication;
 public class ClassDestination {
 
     private String type, display, media;
-    private float distance;
+    private double distance;
+    private double latitudejson, longitudejson;
 
 
 
@@ -31,7 +32,7 @@ public class ClassDestination {
         this.media = media;
     }
 
-    public float getDistance() {
+    public double getDistance() {
         return distance;
     }
 
@@ -39,10 +40,42 @@ public class ClassDestination {
         this.distance = distance;
     }
 
-    public ClassDestination(String type, String display, String media, float distance) {
+    public ClassDestination(String type, String display, String media, double latitudejson, double longitudejson) {
         this.type = type;
         this.display = display;
         this.media = media;
-        this.distance = distance;
+        this.distance = 0;
+        this.latitudejson = latitudejson;
+        this.longitudejson = longitudejson;
+    }
+
+    public double calculdistance(double mylatitude, double mylongitude) {
+
+        double lat1 = mylatitude * Math.PI / 180;
+
+        double lat2 = latitudejson * Math.PI / 180;
+
+
+
+        double long1 = mylongitude * Math.PI / 180;
+
+        double long2 = longitudejson * Math.PI / 180;
+
+
+
+        double R = 6371d;
+
+
+
+        double distance = R * Math.acos(Math.cos(lat1) * Math.cos(lat2) *
+
+                Math.cos(long2 - long1) + Math.sin(lat1) *
+
+                Math.sin(lat2));
+
+
+
+        return distance;
+
     }
 }

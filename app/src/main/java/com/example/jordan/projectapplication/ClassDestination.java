@@ -67,7 +67,7 @@ public class ClassDestination {
 
 
 
-        double distance = R * Math.acos(Math.cos(lat1) * Math.cos(lat2) *
+        distance = R * Math.acos(Math.cos(lat1) * Math.cos(lat2) *
 
                 Math.cos(long2 - long1) + Math.sin(lat1) *
 

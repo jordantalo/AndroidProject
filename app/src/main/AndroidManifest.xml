@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Destination"
+            android:name=".DestinationActivity"
             android:label="@string/title_activity_destination"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

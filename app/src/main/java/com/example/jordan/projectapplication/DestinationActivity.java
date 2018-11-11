@@ -17,7 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class Destination extends AppCompatActivity {
+public class DestinationActivity extends AppCompatActivity {
 
     // Will show the string "data" that holds the results
     TextView results;

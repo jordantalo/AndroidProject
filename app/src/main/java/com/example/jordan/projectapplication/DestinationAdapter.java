@@ -12,7 +12,7 @@ import java.util.List;
 
 public class DestinationAdapter extends BaseAdapter {
 
-    List<Destination> biblio;
+    List<ClassDestination> listdest;
     // LayoutInflater aura pour mission de charger notre fichier XML
     LayoutInflater inflater;
     /**
@@ -23,11 +23,12 @@ public class DestinationAdapter extends BaseAdapter {
      */
     private class ViewHolder {
         TextView tvTitre;
-        TextView tvAuteur;
+        TextView tvLieu;
+        TextView tvDistance;
     }
-    public DestinationAdapter(Context context, List<Destination> objects) {
+    public DestinationAdapter(Context context, List<ClassDestination> objects) {
         inflater = LayoutInflater.from(context);
-        this.biblio = objects;
+        this.listdest = objects;
     }
     /**
      * Génère la vue pour un objet
@@ -37,18 +38,20 @@ public class DestinationAdapter extends BaseAdapter {
         ViewHolder holder;
         if (convertView == null) {Log.v("test", "convertView is null");
             holder = new ViewHolder();
-            convertView = inflater.inflate(R.layout.livre_item, null);
-            holder.tvTitre = (TextView) convertView.findViewById(R.id.txtTitre);
-            holder.tvAuteur = (TextView) convertView
-                    .findViewById(R.id.txtAuteur);
+            convertView = inflater.inflate(R.layout.template_destination, null);
+            holder.tvTitre = (TextView) convertView.findViewById(R.id.titreid);
+            holder.tvLieu = (TextView) convertView.findViewById(R.id.Lieuid);
+            holder.tvDistance = (TextView) convertView.findViewById(R.id.distanceid);
             convertView.setTag(holder);
         } else {
             Log.v("test", "convertView is not null");
             holder = (ViewHolder) convertView.getTag();
         }
-        Livre livre = biblio.get(position);
-        holder.tvTitre.setText(livre.getTitre());
-        holder.tvAuteur.setText(livre.getAuteur());
+
+        ClassDestination dest = listdest.get(position);
+        holder.tvTitre.setText(dest.getType());
+        holder.tvLieu.setText(dest.getDisplay());
+        holder.tvDistance.setText(Double.toString(dest.getDistance()));
         return convertView;
     }
     /**
@@ -57,15 +60,15 @@ public class DestinationAdapter extends BaseAdapter {
     @Override
     public int getCount() {
 // TODO Auto-generated method stub
-        return biblio.size();
+        return listdest.size();
     }
 /**
  * Retourne l'item à la position
  */
     @Override
-    public Livre getItem(int position) {
+    public ClassDestination getItem(int position) {
 // TODO Auto-generated method stub
-        return biblio.get(position);
+        return listdest.get(position);
     }
     /**
      * Retourne la position de l'item

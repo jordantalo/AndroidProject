@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_CHECK_SETTINGS = 920;
     private FusedLocationProviderClient fusedLocationProviderClient;
-    public ClassDestination dest = new ClassDestination("","","",40.7808, -73.9772);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,8 +93,9 @@ public class MainActivity extends AppCompatActivity {
                         // Display the current location on the device screen
                         double Latitude = location.getLatitude();
                         double Longitude = location.getLongitude();
-                        dest.calculdistance(Latitude,Longitude);
-                        Toast.makeText(MainActivity.this, "Distance : " + dest.getDistance(), Toast.LENGTH_SHORT).show();
+                        ClassDestination.setMylongitude(Longitude);
+                        ClassDestination.setMylatitude(Latitude);
+
                     } else {
                         Toast.makeText(MainActivity.this, "Cannot get user current location at the moment", Toast.LENGTH_SHORT).show();
                     }

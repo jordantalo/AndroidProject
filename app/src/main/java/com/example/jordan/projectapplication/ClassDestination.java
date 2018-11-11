@@ -6,6 +6,8 @@ public class ClassDestination {
     private double distance;
     private double latitudejson, longitudejson;
 
+    public static double mylatitude, mylongitude;
+
 
 
     public String getType() {
@@ -40,6 +42,14 @@ public class ClassDestination {
         this.distance = distance;
     }
 
+    public static void setMylatitude(double mylatitude) {
+        ClassDestination.mylatitude = mylatitude;
+    }
+
+    public static void setMylongitude(double mylongitude) {
+        ClassDestination.mylongitude = mylongitude;
+    }
+
     public ClassDestination(String type, String display, String media, double latitudejson, double longitudejson) {
         this.type = type;
         this.display = display;
@@ -49,7 +59,7 @@ public class ClassDestination {
         this.longitudejson = longitudejson;
     }
 
-    public double calculdistance(double mylatitude, double mylongitude) {
+    public double calculdistance() {
 
         double lat1 = mylatitude * Math.PI / 180;
 
